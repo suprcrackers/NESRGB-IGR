@@ -1,0 +1,18 @@
+Components:
+
+IC1: PIC16F684 SOIC-14 with NESRGB-IGR code. Please choose whether you want to use a dual LED with a common anode or cathode in advance!
+IC2: 74LVX125 SOIC-14
+
+C1, C2: 100nF 0805
+R1, R2: 220Ohm 0805
+
+Jumper:
+
+J1: 10kOhm 0805 -> set the reset type of your console there.
+J2: Short the jumper you want to... '3' means that the PIC cycles only through the RGB modes; '4' als cycles through RGB off
+
+PCB-order:
+
+Please choose your preferred service.
+You may order that PCB at OSHPark -> https://oshpark.com/shared_projects/C9jdssMN
+
