@@ -1,2 +1,13 @@
-comming soon...
-(have to replace an outdated component first of publishing)
+NES-I/O
+========
+
+an idea by Arcade-TV from circuit-board.de :) Thank you very much!!!
+
+The board replaces the silver box in NES frontloader. On this PCB the following components are included:
+
+- AC input jack
+- AC to DC conversion
+- MultiAV (SNES and GC are supported)
+- PIC16F684 microcontroller to control the NESRGB color palette and reset the console using your controller :D
+
+All components you need are stated on the silkscreen. An complete overview as well as an English installation guide is coming soon ;)
