@@ -235,7 +235,7 @@ code_led_off    EQU 0x00
 code_led_red    EQU (1<<LED_RED)
 code_led_green  EQU (1<<LED_GREEN)
 code_led_yellow EQU (1<<LED_RED) ^ (1<<LED_GREEN)
-led_type        EQU 0x00    ; LED-Type: 00-com.Cat., 01/com.An. - set here
+led_type        EQU 0x01    ; LED-Type: 00-com.Cat., 01/com.An. - set here
 
 bit_reset_type          EQU RESET_OUT
 code_reset_low_active   EQU (0<<bit_reset_type)  ; 0x00
@@ -664,9 +664,7 @@ flash_led_rst_on_off_on
 ;    goto            flash_led_rst_end
 
 flash_led_rst_end
-    movfw   reg_ctrl_reset
-    andlw   0x30                    ; just to be sure
-    movwf   PORTC
+    M_movff reg_ctrl_reset, PORTC
     clrf    reg_ctrl_reset
     bsf     reg_ctrl_reset, bit_ctrl_reset_flag
     goto    idle
