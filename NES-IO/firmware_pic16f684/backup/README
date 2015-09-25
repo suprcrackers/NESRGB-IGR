@@ -1,0 +1,2 @@
+This code is for the very first version of the NES-I/O with the three resistors next to the 74HC125.
+It can also be used as another version for the risky method, where the PIC16F684 (pins 8, 9 and 10) is soldered directly to the 123-paletteswitch of the NESRGB. The only difference to the 'risky' version in the normal-version folder is that pin 7 is used as the selection of LED with common anode/cathode support instead of outputting the RGB indication voltage.
