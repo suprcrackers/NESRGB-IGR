@@ -313,98 +313,90 @@ read_Button_A
 postwait_Button_A
     btfss   INTCON, INTF
     goto    postwait_Button_A
+
+prewait_Button_B
+    btfss   PORTA, CTRL_CLK
+    goto    prewait_Button_B
+    bcf     INTCON, INTF
     bcf     INTCON, RAIF        ; from now on, no IOC at the data latch shall appear
-
-    bcf     INTCON, INTF
-    movfw   PORTA
-
-read_Button_B
-    btfss   INTCON, INTF
-    movfw   PORTA
-    andlw   (1 << CTRL_DATA)
-    btfss   INTCON, INTF
-    goto    read_Button_B
 store_Button_B
-    btfss   STATUS, Z
+    btfsc   PORTA, CTRL_DATA
     bsf     reg_ctrl_data, BUTTON_B
+postwait_Button_B
+    btfss   INTCON, INTF
+    goto    postwait_Button_B
 
+prewait_Button_Sl
+    btfss   PORTA, CTRL_CLK
+    goto    prewait_Button_Sl
     bcf     INTCON, INTF
-    movfw   PORTA
-
-read_Button_Sl
-    btfss   INTCON, INTF
-    movfw   PORTA
-    andlw   (1 << CTRL_DATA)
-    btfss   INTCON, INTF
-    goto    read_Button_Sl
+    nop
 store_Button_Sl
-    btfss   STATUS, Z
+    btfsc   PORTA, CTRL_DATA
     bsf     reg_ctrl_data, BUTTON_SL
+postwait_Button_Sl
+    btfss   INTCON, INTF
+    goto    postwait_Button_Sl
 
+prewait_Button_St
+    btfss   PORTA, CTRL_CLK
+    goto    prewait_Button_St
     bcf     INTCON, INTF
-    movfw   PORTA
-
-read_Button_St
-    btfss   INTCON, INTF
-    movfw   PORTA
-    andlw   (1 << CTRL_DATA)
-    btfss   INTCON, INTF
-    goto    read_Button_St
+    nop
 store_Button_St
-    btfss   STATUS, Z
+    btfsc   PORTA, CTRL_DATA
     bsf     reg_ctrl_data, BUTTON_ST
+postwait_Button_St
+    btfss   INTCON, INTF
+    goto    postwait_Button_St
 
+prewait_DPad_Up
+    btfss   PORTA, CTRL_CLK
+    goto    prewait_DPad_Up
     bcf     INTCON, INTF
-    movfw   PORTA
-
-read_DPad_Up
-    btfss   INTCON, INTF
-    movfw   PORTA
-    andlw   (1 << CTRL_DATA)
-    btfss   INTCON, INTF
-    goto    read_DPad_Up
+    nop
 store_DPad_Up
-    btfss   STATUS, Z
+    btfsc   PORTA, CTRL_DATA
     bsf     reg_ctrl_data, DPAD_UP
+postwait_DPad_Up
+    btfss   INTCON, INTF
+    goto    postwait_DPad_Up
 
+prewait_DPad_Dw
     bcf     INTCON, INTF
-    movfw   PORTA
-
-read_DPad_Dw
-    btfss   INTCON, INTF
-    movfw   PORTA
-    andlw   (1 << CTRL_DATA)
-    btfss   INTCON, INTF
-    goto    read_DPad_Dw
-store_DPad_Dw
-    btfss   STATUS, Z
+    nop
+    btfss   PORTA, CTRL_CLK
+    goto    prewait_DPad_Dw
+store_Button_DW
+    btfsc   PORTA, CTRL_DATA
     bsf     reg_ctrl_data, DPAD_DW
+postwait_DPad_Dw
+    btfss   INTCON, INTF
+    goto    postwait_DPad_Dw
 
+prewait_DPad_Le
+    btfss   PORTA, CTRL_CLK
+    goto    prewait_DPad_Le
     bcf     INTCON, INTF
-    movfw   PORTA
-
-read_DPad_Le
-    btfss   INTCON, INTF
-    movfw   PORTA
-    andlw   (1 << CTRL_DATA)
-    btfss   INTCON, INTF
-    goto    read_DPad_Le
+    nop
 store_DPad_Le
-    btfss   STATUS, Z
+    btfsc   PORTA, CTRL_DATA
     bsf     reg_ctrl_data, DPAD_LE
+postwait_DPad_Le
+    btfss   INTCON, INTF
+    goto    postwait_DPad_Le
 
+prewait_DPad_Ri
+    btfss   PORTA, CTRL_CLK
+    goto    prewait_DPad_Ri
     bcf     INTCON, INTF
-    movfw   PORTA
-
-read_DPad_Ri
-    btfss   INTCON, INTF
-    movfw   PORTA
-    andlw   (1 << CTRL_DATA)
-    btfss   INTCON, INTF
-    goto    read_DPad_Ri
+    nop
 store_DPad_Ri
-    btfss   STATUS, Z
+    btfsc   PORTA, CTRL_DATA
     bsf     reg_ctrl_data, DPAD_RI
+postwait_DPad_Ri
+    btfss   INTCON, INTF
+    goto    postwait_DPad_Ri
 
     btfsc   INTCON, RAIF
     goto    idle            ; another IOC on data latch appeared -> invalid read
