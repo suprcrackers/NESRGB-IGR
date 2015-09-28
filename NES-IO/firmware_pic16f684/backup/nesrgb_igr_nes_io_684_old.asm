@@ -235,12 +235,12 @@ repetitions_mode_delay  EQU 0x4a    ; around 740ms
 
 BUTTON_A    EQU 7
 BUTTON_B    EQU 6
-BUTTON_Sl   EQU 5
-BUTTON_St   EQU 4
-BUTTON_Up   EQU 3
-BUTTON_Dw   EQU 2
-BUTTON_Le   EQU 1
-BUTTON_Ri   EQU 0
+BUTTON_SL   EQU 5
+BUTTON_ST   EQU 4
+DPAD_UP     EQU 3
+DPAD_DW     EQU 2
+DPAD_LE     EQU 1
+DPAD_RI     EQU 0
 
 ; -----------------------------------------------------------------------
 
@@ -319,7 +319,7 @@ read_Button_Sl
     goto    read_Button_Sl
 store_Button_Sl
     btfss   STATUS, Z
-    bsf     reg_ctrl_data, BUTTON_Sl
+    bsf     reg_ctrl_data, BUTTON_SL
 
     bcf     INTCON, INTF
     movfw   PORTA
@@ -332,59 +332,59 @@ read_Button_St
     goto    read_Button_St
 store_Button_St
     btfss   STATUS, Z
-    bsf     reg_ctrl_data, BUTTON_St
+    bsf     reg_ctrl_data, BUTTON_ST
 
     bcf     INTCON, INTF
     movfw   PORTA
 
-read_Button_Up
+read_DPad_Up
     btfss   INTCON, INTF
     movfw   PORTA
     andlw   (1 << CTRL_DATA)
     btfss   INTCON, INTF
-    goto    read_Button_Up
-store_Button_Up
+    goto    read_DPad_Up
+store_DPad_Up
     btfss   STATUS, Z
-    bsf     reg_ctrl_data, BUTTON_Up
+    bsf     reg_ctrl_data, DPAD_UP
 
     bcf     INTCON, INTF
     movfw   PORTA
 
-read_Button_Dw
+read_DPad_Dw
     btfss   INTCON, INTF
     movfw   PORTA
     andlw   (1 << CTRL_DATA)
     btfss   INTCON, INTF
-    goto    read_Button_Dw
-store_Button_Dw
+    goto    read_DPad_Dw
+store_DPad_Dw
     btfss   STATUS, Z
-    bsf     reg_ctrl_data, BUTTON_Dw
+    bsf     reg_ctrl_data, DPAD_DW
 
     bcf     INTCON, INTF
     movfw   PORTA
 
-read_Button_Le
+read_DPad_Le
     btfss   INTCON, INTF
     movfw   PORTA
     andlw   (1 << CTRL_DATA)
     btfss   INTCON, INTF
-    goto    read_Button_Le
-store_Button_Le
+    goto    read_DPad_Le
+store_DPad_Le
     btfss   STATUS, Z
-    bsf     reg_ctrl_data, BUTTON_Le
+    bsf     reg_ctrl_data, DPAD_LE
 
     bcf     INTCON, INTF
     movfw   PORTA
 
-read_Button_Ri
+read_DPad_Ri
     btfss   INTCON, INTF
     movfw   PORTA
     andlw   (1 << CTRL_DATA)
     btfss   INTCON, INTF
-    goto    read_Button_Ri
-store_Button_Ri
+    goto    read_DPad_Ri
+store_DPad_Ri
     btfss   STATUS, Z
-    bsf     reg_ctrl_data, BUTTON_Ri
+    bsf     reg_ctrl_data, DPAD_RI
 
     btfsc   INTCON, RAIF
     goto    idle            ; another IOC on data latch appeared -> invalid read
