@@ -243,25 +243,22 @@ DPAD_RI     EQU 0
 idle
     clrf    reg_ctrl_data
     btfsc   PORTA, CTRL_LATCH
-    goto    wait_ctrl_read      ; go go go
+    goto    read_Button_A       ; go go go
     bcf     INTCON, RAIF
 
 idle_loop
-    btfsc	INTCON, RAIF    ; data latch changed?
-    goto    wait_ctrl_read  ; yes
+    btfsc   INTCON, RAIF    ; data latch changed?
+    goto    read_Button_A   ; yes
     btfsc   PORTA, RESET_IN ; reset button pressed?
     goto    check_reset     ; yes
-    btfsc	INTCON, RAIF    ; data latch changed?
-    goto    wait_ctrl_read  ; yes
+    btfsc   INTCON, RAIF    ; data latch changed?
+    goto    read_Button_A   ; yes
     goto    idle_loop       ; no -> repeat loop
 
 
-wait_ctrl_read
-    btfsc   PORTA, CTRL_LATCH
-    goto    wait_ctrl_read
-  
 read_Button_A
     bcf     INTCON, INTF
+    nop
     btfsc   PORTA, CTRL_DATA
     bsf     reg_ctrl_data, BUTTON_A
 postwait_Button_A
