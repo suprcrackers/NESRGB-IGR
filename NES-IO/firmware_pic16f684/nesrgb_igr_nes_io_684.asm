@@ -184,8 +184,9 @@ LED_GREEN   EQU 5
 
 ; reg_port_buffer     EQU 0x20
 reg_ctrl_data       EQU 0x21
-reg_overflow_cnt    EQU 0x22
-reg_repetition_cnt  EQU 0x23
+reg_ctrl_read_ready EQU 0x22
+reg_overflow_cnt    EQU 0x23
+reg_repetition_cnt  EQU 0x24
 reg_current_mode    EQU 0x30
 reg_ctrl_reset      EQU 0x40
 
@@ -236,28 +237,12 @@ DPAD_RI     EQU 0
     nop                 ; 02h
     goto    start       ; 03h begin program / Initializing
 
- org    0x0004  ; jump here on interrupt with GIE set (should not appear)
-    return      ; return with GIE unset
 
- org    0x0005
-idle
-    clrf    reg_ctrl_data
-    btfsc   PORTA, CTRL_LATCH
-    goto    read_Button_A       ; go go go
-    bcf     INTCON, RAIF
-
-idle_loop
-    btfsc   INTCON, RAIF    ; data latch changed?
-    goto    read_Button_A   ; yes
-    btfsc   PORTA, RESET_IN ; reset button pressed?
-    goto    check_reset     ; yes
-    btfsc   INTCON, RAIF    ; data latch changed?
-    goto    read_Button_A   ; yes
-    goto    idle_loop       ; no -> repeat loop
-
-
-read_Button_A
-    bcf     INTCON, INTF
+; --------ISR--------
+ org    0x0004  ; jump here on interrupt with GIE set
+read_Button_A   ; button A can be read (nearly) immediately
+    M_movlf ((1<<INTE)^(1<<RAIE)), INTCON
+    nop
     nop
     btfsc   PORTA, CTRL_DATA
     bsf     reg_ctrl_data, BUTTON_A
@@ -269,7 +254,7 @@ prewait_Button_B
     btfss   PORTA, CTRL_CLK
     goto    prewait_Button_B
     bcf     INTCON, INTF
-    bcf     INTCON, RAIF        ; from now on, no IOC at the data latch shall appear
+    bcf     INTCON, RAIF      ; from now on, no IOC at the data latch shall appear
 store_Button_B
     btfsc   PORTA, CTRL_DATA
     bsf     reg_ctrl_data, BUTTON_B
@@ -314,10 +299,10 @@ postwait_DPad_Up
     goto    postwait_DPad_Up
 
 prewait_DPad_Dw
-    bcf     INTCON, INTF
-    nop
     btfss   PORTA, CTRL_CLK
     goto    prewait_DPad_Dw
+    bcf     INTCON, INTF
+    nop
 store_Button_DW
     btfsc   PORTA, CTRL_DATA
     bsf     reg_ctrl_data, DPAD_DW
@@ -349,32 +334,65 @@ postwait_DPad_Ri
     btfss   INTCON, INTF
     goto    postwait_DPad_Ri
 
-    btfsc   INTCON, RAIF
-    goto    idle            ; another IOC on data latch appeared -> invalid read
-	
 
+check_controller_read
+    btfsc   INTCON, RAIF            ; another IOC on data latch appeared
+    goto    invalid_controller_read ; -> if yes, invalid read
+    bsf     reg_ctrl_read_ready, 0  ; -> if no, indicate a valid read is stored
+    return                          ; return with GIE still unset (GIE set again on demand)
+
+invalid_controller_read
+    clrf    INTCON
+    clrf    reg_ctrl_data
+    clrf    reg_ctrl_read_ready
+    bsf	    INTCON, RAIE
+    retfie                      ; return with GIE set
+
+
+; --------IDLE loops--------
+ org    0x004d
+idle_prepare
+    clrf    INTCON
+    clrf    reg_ctrl_data
+    clrf    reg_ctrl_read_ready
+
+    btfsc   PORTA, CTRL_LATCH
+    call    read_Button_A                 ; go go go
+    M_movlf ((1<<GIE)^(1<<RAIE)), INTCON  ; set GIE, only react on RAIF
+
+idle_loop
+    btfsc   reg_ctrl_read_ready, 0  ; controller read?
+    goto    checkkeys               ; yes -> check data
+    btfsc   PORTA, RESET_IN         ; reset button pressed?
+    goto    check_reset             ; yes
+    goto    idle_loop               ; no -> repeat loop
+
+
+; --------controller routines--------
+ org 0x0059
 checkkeys
-    M_belf  0x0f, reg_ctrl_data, ctrl_reset                 ; Start+Select+A+B
-    btfsc   reg_ctrl_reset, bit_ctrl_reset_flag             ; Start+Select+A+B previously detected?
-    goto    doreset                                         ; if yes, perform a reset
-    M_belf  0xcd, reg_ctrl_data, domode_prev                ; Start+Select+D-Pad Left
-    M_belf  0xce, reg_ctrl_data, domode_next                ; Start+Select+D-Pad Right
-	goto	idle
+    clrf    INTCON
+    M_belf  0x0f, reg_ctrl_data, ctrl_reset     ; Start+Select+A+B
+    btfsc   reg_ctrl_reset, bit_ctrl_reset_flag ; Start+Select+A+B previously detected?
+    goto    doreset                             ; if yes, perform a reset
+    M_belf  0xcd, reg_ctrl_data, domode_prev    ; Start+Select+D-Pad Left
+    M_belf  0xce, reg_ctrl_data, domode_next    ; Start+Select+D-Pad Right
+    goto    idle_prepare
 
 ctrl_reset
-    btfss           reg_ctrl_reset, bit_ctrl_reset_flag
-    goto            flash_led_rst                               ; first loop -> confirm combo-detection and set ctrl_reset_flag
-    btfsc           reg_ctrl_reset, bit_ctrl_reset_perform_long
-    goto            dolongreset
+    btfss reg_ctrl_reset, bit_ctrl_reset_flag ; first loop?
+    goto  flash_led_rst                       ; yes -> confirm combo-detection and set ctrl_reset_flag
+    btfsc reg_ctrl_reset, bit_ctrl_reset_perform_long
+    goto  dolongreset
     M_delay_x05ms   repetitions_045ms
-    incf            reg_ctrl_reset, 1
-    goto            idle
+    incf  reg_ctrl_reset, 1
+    goto  idle_prepare
 
 doreset
-    banksel         TRISA                   ; Bank 1
-    bcf             TRISA, RESET_OUT
-    banksel         PORTA                   ; Bank 0
-    bsf             PORTA, RESET_OUT
+    banksel TRISA             ; Bank 1
+    bcf     TRISA, RESET_OUT
+    banksel PORTA             ; Bank 0
+    bsf     PORTA, RESET_OUT
     M_delay_x05ms   repetitions_480ms
 
 releasereset_wait_high
@@ -383,44 +401,46 @@ releasereset_wait_high
     goto    release_reset
 
 dolongreset
-    banksel         TRISA                   ; Bank 1
-    bcf             TRISA, RESET_OUT
-    banksel         PORTA                   ; Bank 0
-    bsf             PORTA, RESET_OUT
+    banksel TRISA             ; Bank 1
+    bcf     TRISA, RESET_OUT
+    banksel PORTA             ; Bank 0
+    bsf     PORTA, RESET_OUT
     M_delay_x05ms   repetitions_1000ms
     M_delay_x05ms   repetitions_1000ms
     M_delay_x05ms   repetitions_1000ms
 
-release_reset    ; Bank 0
+release_reset
     bcf     PORTA, RESET_OUT
-    banksel TRISA                               ; Bank 1
+    banksel TRISA             ; Bank 1
     bsf     TRISA, RESET_OUT
-    banksel PORTA                               ; Bank 0
+    banksel PORTA             ; Bank 0
     clrf    reg_ctrl_reset
-    goto    idle
+    goto    idle_prepare
 
 domode_prev
     M_celf  RGB_natural, reg_current_mode, modepreset ; preset mode if current mode is RGB_natural
     decf    reg_current_mode, 1
-    call    set_reg_current_mode    ; change mode during runtime
+    call    set_reg_current_mode  ; change mode during runtime
     call    mode_change_delay
-    goto    idle
+    goto    idle_prepare
 
 domode_next
-    incf            reg_current_mode, 1
-    M_celf          code_mode_overflow, reg_current_mode, modereset
-    call            set_reg_current_mode                        ; change mode during runtime
+    incf    reg_current_mode, 1
+    M_celf  code_mode_overflow, reg_current_mode, modereset
+    call    set_reg_current_mode  ; change mode during runtime
     M_delay_x05ms   repetitions_mode_delay
-    goto            idle
+    goto    idle_prepare
 
-; --------check reset routines--------
 
+; --------reset button routines--------
+ org 0x00a1
 check_reset
+    clrf    INTCON
     call    delay_05ms      ; software debounce
     call    delay_05ms      ; software debounce
     call    delay_05ms      ; software debounce
     btfss   PORTA, RESET_IN ; reset still pressed?
-    goto    idle            ; no -> goto idle
+    goto    idle_prepare    ; no -> goto idle
 
     M_movlf repetitions_mode_delay , reg_repetition_cnt  ; repeat delay_05ms x-times
 
@@ -432,22 +452,23 @@ check_reset_loop
     goto    check_reset_loop        ; no -> stay in this loop
 
 reset_next_mode
-    incf    reg_current_mode, 1                             ; next mode
+    incf    reg_current_mode, 1   ; next mode
     M_celf  code_mode_overflow, reg_current_mode, modereset
-    call    set_reg_current_mode                            ; change mode during runtime
+    call    set_reg_current_mode  ; change mode during runtime
 
     M_movlf repetitions_mode_delay , reg_repetition_cnt  ; repeat delay_05ms x-times
 
 reset_mode_change_loop
     call    delay_05ms
     btfss   PORTA, RESET_IN         ; reset still pressed?
-    goto    idle                    ; no -> end procedure (runtime change)
+    goto    idle_prepare            ; no -> end procedure (runtime change)
     decfsz  reg_repetition_cnt, 1   ; delay_05ms repeated x-times?
     goto    reset_mode_change_loop  ; no -> stay in this loop
     goto    reset_next_mode         ; yes -> next mode
 
-; --------mode, led, delay and save_mode calls--------
 
+; --------mode, led, delay and save_mode calls--------
+ org 0x00bc
 set_reg_current_mode ; setting the RGB mode includes setting the LED
     M_belf  RGB_natural, reg_current_mode, modeset_natural
     M_belf  RGB_improved, reg_current_mode, modeset_improved
@@ -456,23 +477,23 @@ set_reg_current_mode ; setting the RGB mode includes setting the LED
 
 modeset_natural
     movlw   code_RGB_natural ^ code_led_red
-    btfsc	PORTC, LED_TYPE ; if common anode:
-    xorlw	0x30            ; invert output
-    movwf	PORTC
+    btfsc   PORTC, LED_TYPE ; if common anode:
+    xorlw   0x30            ; invert output
+    movwf   PORTC
     goto    save_mode
 
 modeset_improved
     movlw   code_RGB_improved ^ code_led_green
-    btfsc	PORTC, LED_TYPE ; if common anode:
-    xorlw	0x30            ; invert output
-    movwf	PORTC
+    btfsc   PORTC, LED_TYPE ; if common anode:
+    xorlw   0x30            ; invert output
+    movwf   PORTC
     goto    save_mode
 
 modeset_garish
     movlw   code_RGB_garish ^ code_led_yellow
-    btfsc	PORTC, LED_TYPE ; if common anode:
-    xorlw	0x30            ; invert output
-    movwf	PORTC
+    btfsc   PORTC, LED_TYPE ; if common anode:
+    xorlw   0x30            ; invert output
+    movwf   PORTC
     goto    save_mode
 
 setleds
@@ -486,36 +507,36 @@ setleds_off
     movfw   PORTC
     andlw   0x07            ; save RGB mode
     xorlw   code_led_off    ; set LED
-    btfsc	PORTC, LED_TYPE ; if common anode:
-    xorlw	0x30            ; invert output
-    movwf	PORTC
+    btfsc   PORTC, LED_TYPE ; if common anode:
+    xorlw   0x30            ; invert output
+    movwf   PORTC
     goto    save_mode
 
 setleds_red
     movfw   PORTC
     andlw   0x07            ; save RGB mode
     xorlw   code_led_red    ; set LED
-    btfsc	PORTC, LED_TYPE ; if common anode:
-    xorlw	0x30            ; invert output
-    movwf	PORTC
+    btfsc   PORTC, LED_TYPE ; if common anode:
+    xorlw   0x30            ; invert output
+    movwf   PORTC
     goto    save_mode
 
 setleds_green
     movfw   PORTC
     andlw   0x07            ; save RGB mode
     xorlw   code_led_green  ; set LED
-    btfsc	PORTC, LED_TYPE ; if common anode:
-    xorlw	0x30            ; invert output
-    movwf	PORTC
+    btfsc   PORTC, LED_TYPE ; if common anode:
+    xorlw   0x30            ; invert output
+    movwf   PORTC
     goto    save_mode
 
 setleds_yellow
     movfw   PORTC
     andlw   0x07            ; save RGB mode
     xorlw   code_led_yellow ; set LED
-    btfsc	PORTC, LED_TYPE ; if common anode:
-    xorlw	0x30            ; invert output
-    movwf	PORTC
+    btfsc   PORTC, LED_TYPE ; if common anode:
+    xorlw   0x30            ; invert output
+    movwf   PORTC
 ;    goto    save_mode
 
 save_mode
@@ -526,21 +547,21 @@ save_mode
     M_movlf 0x55, EECON2
     M_movlf 0xaa, EECON2
     bsf     EECON1, WR
-    banksel	PORTA		; two cycles again
+    banksel PORTA               ; two cycles again
     return
 
 flash_led_rst
-    M_movpf         PORTC, reg_ctrl_reset
-    andlw           0x07                    ; save RGB mode
-    xorlw           code_led_off            ; set LED
-    btfsc           PORTC, LED_TYPE         ; if common anode:
-    xorlw           0x30                    ; invert output
-    movwf           PORTC
+    M_movpf PORTC, reg_ctrl_reset
+    andlw   0x07            ; save RGB mode
+    xorlw   code_led_off    ; set LED
+    btfsc   PORTC, LED_TYPE ; if common anode:
+    xorlw   0x30            ; invert output
+    movwf   PORTC
     M_delay_x05ms   repetitions_300ms
-    M_movff         reg_ctrl_reset, PORTC
-    clrf            reg_ctrl_reset
-    bsf             reg_ctrl_reset, bit_ctrl_reset_flag
-    goto            idle
+    M_movff reg_ctrl_reset, PORTC
+    clrf    reg_ctrl_reset
+    bsf     reg_ctrl_reset, bit_ctrl_reset_flag
+    goto    idle_prepare
 
 
 modepreset
@@ -553,14 +574,14 @@ modereset
     return
 
 delay_05ms
-    clrf    TMR0                ; start timer (operation clears prescaler of T0)
+    clrf    TMR0              ; start timer (operation clears prescaler of T0)
     banksel TRISA
     movfw   OPTION_REG
     andlw   0xf0
     movwf   OPTION_REG
     banksel PORTA
     M_movlf delay_05ms_t0_overflows, reg_overflow_cnt
-    bsf     INTCON, T0IE        ; enable timer interrupt
+    M_movlf (1<<T0IE), INTCON ; enable timer interrupt
 
 delay_05ms_loop_pre
     bcf     INTCON, T0IF
@@ -570,7 +591,7 @@ delay_05ms_loop
     goto    delay_05ms_loop
     decfsz  reg_overflow_cnt, 1
     goto    delay_05ms_loop_pre
-    bcf     INTCON, T0IE        ; disable timer interrupt
+    clrf    INTCON              ; disable timer interrupt
     return
 
 delay_x05ms
@@ -590,12 +611,12 @@ mode_change_delay_loop
     return
 
 ; --------initialization--------
-
+ org 0x013f
 start
     clrf    PORTA
     clrf    PORTC
     M_movlf 0x07, CMCON0            ; GPIO2..0 are digital I/O (not connected to comparator)
-    M_movlf 0x18, INTCON            ; enable interrupts: INTE (interrupt on rising/falling edge on A2) and RAIE
+    clrf    INTCON                  ; INTCON set on demand during program
     banksel TRISA                   ; Bank 1
     M_movlf 0x70, OSCCON            ; use 8MHz internal clock (internal clock set on config)
     clrf    ANSEL
@@ -603,22 +624,22 @@ start
     M_movlf 0x08, TRISC             ; out out in out out out
     M_movlf (1<<CTRL_LATCH), IOCA   ; IOC on CTRL_LATCH
     M_movlf 0x80, OPTION_REG        ; global pullup disable, use falling edge on A2, prescaler T0 1:2
-    banksel	PORTA                   ; Bank 0
+    banksel PORTA                   ; Bank 0
 
 load_mode
-    clrf	reg_current_mode
+    clrf    reg_current_mode
     bcf     STATUS, C           ; clear carry
     banksel EEADR               ; fetch current mode from EEPROM
     clrf    EEADR               ; address 0
     bsf     EECON1, RD
     movfw   EEDAT
     banksel PORTA
-    movwf	reg_current_mode    ; last mode saved
+    movwf   reg_current_mode    ; last mode saved
     call    set_reg_current_mode
 
 init_end
     clrf    reg_ctrl_reset  ; clear this reg here just in case
-    goto    idle
+    goto    idle_prepare
 
 ; -----------------------------------------------------------------------
 ; eeprom data
