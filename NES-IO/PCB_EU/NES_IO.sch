@@ -6952,22 +6952,22 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <text x="18.7325" y="1.905" size="1.27" layer="21" font="vector" ratio="12">11</text>
 <smd name="GND5" x="16.51" y="0.15875" dx="4.064" dy="1.27" layer="16" roundness="100"/>
 <smd name="GND6" x="21.43125" y="3.33375" dx="4.064" dy="1.27" layer="16" roundness="100" rot="R270"/>
-<wire x1="0.79375" y1="1.5875" x2="0.79375" y2="4.92125" width="0" layer="46"/>
-<wire x1="0.79375" y1="4.92125" x2="1.42875" y2="4.92125" width="0" layer="46"/>
-<wire x1="1.42875" y1="4.92125" x2="1.42875" y2="1.5875" width="0" layer="46"/>
-<wire x1="1.42875" y1="1.5875" x2="0.79375" y2="1.5875" width="0" layer="46"/>
-<wire x1="21.11375" y1="1.5875" x2="21.11375" y2="4.92125" width="0" layer="46"/>
-<wire x1="21.11375" y1="4.92125" x2="21.74875" y2="4.92125" width="0" layer="46"/>
-<wire x1="21.74875" y1="4.92125" x2="21.74875" y2="1.5875" width="0" layer="46"/>
-<wire x1="21.74875" y1="1.5875" x2="21.11375" y2="1.5875" width="0" layer="46"/>
-<wire x1="8.016875" y1="-0.15875" x2="4.683125" y2="-0.15875" width="0" layer="46"/>
-<wire x1="4.683125" y1="-0.15875" x2="4.683125" y2="0.47625" width="0" layer="46"/>
-<wire x1="4.683125" y1="0.47625" x2="8.016875" y2="0.47625" width="0" layer="46"/>
-<wire x1="8.016875" y1="0.47625" x2="8.016875" y2="-0.15875" width="0" layer="46"/>
-<wire x1="18.176875" y1="-0.15875" x2="14.843125" y2="-0.15875" width="0" layer="46"/>
-<wire x1="14.843125" y1="-0.15875" x2="14.843125" y2="0.47625" width="0" layer="46"/>
-<wire x1="14.843125" y1="0.47625" x2="18.176875" y2="0.47625" width="0" layer="46"/>
-<wire x1="18.176875" y1="0.47625" x2="18.176875" y2="-0.15875" width="0" layer="46"/>
+<wire x1="0.79375" y1="1.5875" x2="0.79375" y2="4.92125" width="0" layer="20"/>
+<wire x1="0.79375" y1="4.92125" x2="1.42875" y2="4.92125" width="0" layer="20"/>
+<wire x1="1.42875" y1="4.92125" x2="1.42875" y2="1.5875" width="0" layer="20"/>
+<wire x1="1.42875" y1="1.5875" x2="0.79375" y2="1.5875" width="0" layer="20"/>
+<wire x1="21.11375" y1="1.5875" x2="21.11375" y2="4.92125" width="0" layer="20"/>
+<wire x1="21.11375" y1="4.92125" x2="21.74875" y2="4.92125" width="0" layer="20"/>
+<wire x1="21.74875" y1="4.92125" x2="21.74875" y2="1.5875" width="0" layer="20"/>
+<wire x1="21.74875" y1="1.5875" x2="21.11375" y2="1.5875" width="0" layer="20"/>
+<wire x1="8.016875" y1="-0.15875" x2="4.683125" y2="-0.15875" width="0" layer="20"/>
+<wire x1="4.683125" y1="-0.15875" x2="4.683125" y2="0.47625" width="0" layer="20"/>
+<wire x1="4.683125" y1="0.47625" x2="8.016875" y2="0.47625" width="0" layer="20"/>
+<wire x1="8.016875" y1="0.47625" x2="8.016875" y2="-0.15875" width="0" layer="20"/>
+<wire x1="18.176875" y1="-0.15875" x2="14.843125" y2="-0.15875" width="0" layer="20"/>
+<wire x1="14.843125" y1="-0.15875" x2="14.843125" y2="0.47625" width="0" layer="20"/>
+<wire x1="14.843125" y1="0.47625" x2="18.176875" y2="0.47625" width="0" layer="20"/>
+<wire x1="18.176875" y1="0.47625" x2="18.176875" y2="-0.15875" width="0" layer="20"/>
 </package>
 <package name="SNES-MULTIAV2">
 <wire x1="0" y1="0" x2="22.4" y2="0" width="0.127" layer="21"/>
@@ -6984,10 +6984,10 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <wire x1="0" y1="2.9" x2="0" y2="0" width="0.127" layer="21"/>
 <hole x="5.08" y="9.8425" drill="3.2"/>
 <hole x="17.78" y="9.8425" drill="3.2"/>
-<text x="2.54" y="0" size="1.27" layer="21" font="vector" ratio="12">1</text>
-<text x="2.54" y="2.54" size="1.27" layer="21" font="vector" ratio="12">2</text>
-<text x="19.05" y="0" size="1.27" layer="21" font="vector" ratio="12">11</text>
-<text x="19.05" y="2.54" size="1.27" layer="21" font="vector" ratio="12">12</text>
+<text x="2.54" y="0.15875" size="1.27" layer="21" font="vector" ratio="12">1</text>
+<text x="2.54" y="1.74625" size="1.27" layer="21" font="vector" ratio="12">2</text>
+<text x="19.05" y="0.15875" size="1.27" layer="21" font="vector" ratio="12">11</text>
+<text x="19.05" y="1.74625" size="1.27" layer="21" font="vector" ratio="12">12</text>
 <hole x="5.08" y="0" drill="1"/>
 <smd name="R" x="5.08" y="0" dx="1.524" dy="1.524" layer="16"/>
 <smd name="G" x="5.08" y="2.54" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
@@ -7018,13 +7018,13 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <package name="FUSEHOLDER">
 <pad name="P$1" x="-2.54" y="0" drill="1" diameter="1.4224" shape="long" rot="R90"/>
 <pad name="P$2" x="2.54" y="0" drill="1" diameter="1.4224" shape="long" rot="R90"/>
-<hole x="0" y="2.54" drill="1.1"/>
-<hole x="0" y="-2.54" drill="1.1"/>
-<hole x="4.1275" y="0" drill="1.1"/>
-<hole x="-4.1275" y="0" drill="1.1"/>
 <circle x="0" y="0" radius="4.7" width="0.1524" layer="21"/>
 <text x="1.27" y="5.08" size="1.27" layer="25" font="vector">&gt;NAME</text>
 <text x="5.08" y="2.54" size="1.27" layer="27" font="vector">&gt;VALUE</text>
+<circle x="4.1275" y="0" radius="0.4490125" width="0.127" layer="21"/>
+<circle x="0" y="2.54" radius="0.4490125" width="0.127" layer="21"/>
+<circle x="-4.1275" y="0" radius="0.4490125" width="0.127" layer="21"/>
+<circle x="0" y="-2.54" radius="0.4490125" width="0.127" layer="21"/>
 </package>
 <package name="CINCH_2">
 <pad name="P$1" x="0" y="-4.5" drill="1.7" rot="R180"/>
@@ -7040,6 +7040,35 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <wire x1="-5.08" y1="0" x2="-4.15" y2="1.27" width="0.127" layer="21" curve="90"/>
 <wire x1="-5.08" y1="-2.54" x2="-5.08" y2="0" width="0.127" layer="21"/>
 <wire x1="5.08" y1="-2.54" x2="5.08" y2="0" width="0.127" layer="21"/>
+</package>
+<package name="NESFR_JACK2">
+<wire x1="-10.16" y1="-2.54" x2="10.16" y2="-2.54" width="0.1524" layer="21" style="dashdot"/>
+<wire x1="10.16" y1="-2.54" x2="10.16" y2="8.255" width="0.1524" layer="21" style="dashdot"/>
+<wire x1="-10.16" y1="-2.54" x2="-10.16" y2="8.255" width="0.1524" layer="21" style="dashdot"/>
+<hole x="-5.08" y="-1.27" drill="1"/>
+<smd name="P$1" x="-5.08" y="-1.27" dx="1.524" dy="1.524" layer="16"/>
+<hole x="-2.54" y="-1.27" drill="1"/>
+<hole x="0" y="-1.27" drill="1"/>
+<hole x="2.54" y="-1.27" drill="1"/>
+<hole x="5.08" y="-1.27" drill="1"/>
+<hole x="5.08" y="1.27" drill="1"/>
+<hole x="2.54" y="1.27" drill="1"/>
+<hole x="0" y="1.27" drill="1"/>
+<hole x="-2.54" y="1.27" drill="1"/>
+<hole x="-5.08" y="1.27" drill="1"/>
+<smd name="P$2" x="-5.08" y="1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
+<smd name="P$3" x="-2.54" y="-1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
+<smd name="P$4" x="-2.54" y="1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180" thermals="no"/>
+<smd name="P$5" x="0" y="-1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
+<smd name="P$6" x="0" y="1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180" thermals="no"/>
+<smd name="P$7" x="2.54" y="-1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
+<smd name="P$8" x="2.54" y="1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180" thermals="no"/>
+<smd name="P$9" x="5.08" y="-1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
+<smd name="P$10" x="5.08" y="1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
+<text x="-7.14375" y="-1.905" size="1.27" layer="21" font="vector" ratio="12">1</text>
+<text x="-7.14375" y="0.635" size="1.27" layer="21" font="vector" ratio="12">2</text>
+<text x="6.35" y="0.635" size="1.27" layer="21" font="vector" ratio="12">10</text>
+<text x="6.35" y="-1.905" size="1.27" layer="21" font="vector" ratio="12">9</text>
 </package>
 </packages>
 <symbols>
@@ -7118,6 +7147,20 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <wire x1="-2.54" y1="2.54" x2="0" y2="0" width="0.254" layer="94" curve="-90"/>
 <wire x1="0" y1="0" x2="2.54" y2="-2.54" width="0.254" layer="94" curve="90"/>
 <wire x1="2.54" y1="-2.54" x2="5.08" y2="0" width="0.254" layer="94" curve="90"/>
+</symbol>
+<symbol name="NESFR_RGB_JACK">
+<pin name="12V" x="-5.08" y="7.62" length="middle"/>
+<pin name="5V" x="-5.08" y="5.08" length="middle"/>
+<pin name="GND" x="-5.08" y="2.54" length="middle"/>
+<pin name="R" x="-5.08" y="0" length="middle"/>
+<pin name="G" x="-5.08" y="-2.54" length="middle"/>
+<pin name="B" x="-5.08" y="-5.08" length="middle"/>
+<pin name="V/CS" x="-5.08" y="-7.62" length="middle"/>
+<pin name="A" x="-5.08" y="-10.16" length="middle"/>
+<wire x1="0" y1="10.16" x2="0" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="0" y1="-12.7" x2="10.16" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-12.7" x2="10.16" y2="10.16" width="0.254" layer="94"/>
+<wire x1="10.16" y1="10.16" x2="0" y2="10.16" width="0.254" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -7246,6 +7289,28 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <connects>
 <connect gate="G$1" pin="S" pad="P$2 P$3 P$4"/>
 <connect gate="G$1" pin="T" pad="P$1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="NESFR_JACK2">
+<gates>
+<gate name="G$1" symbol="NESFR_RGB_JACK" x="-5.08" y="2.54"/>
+</gates>
+<devices>
+<device name="" package="NESFR_JACK2">
+<connects>
+<connect gate="G$1" pin="12V" pad="P$10"/>
+<connect gate="G$1" pin="5V" pad="P$9"/>
+<connect gate="G$1" pin="A" pad="P$2"/>
+<connect gate="G$1" pin="B" pad="P$3"/>
+<connect gate="G$1" pin="G" pad="P$5"/>
+<connect gate="G$1" pin="GND" pad="P$4 P$6 P$8"/>
+<connect gate="G$1" pin="R" pad="P$7"/>
+<connect gate="G$1" pin="V/CS" pad="P$1"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -15608,6 +15673,7 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <part name="U$21" library="nintendo" deviceset="CINCH_2" device=""/>
 <part name="GND16" library="supply1" deviceset="GND" device=""/>
 <part name="GND29" library="supply1" deviceset="GND" device=""/>
+<part name="U$8" library="nintendo" deviceset="NESFR_JACK2" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -15639,7 +15705,7 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <instance part="GND10" gate="1" x="104.14" y="86.36"/>
 <instance part="GND11" gate="1" x="109.22" y="81.28"/>
 <instance part="GND_MAV" gate="1" x="22.86" y="83.82"/>
-<instance part="J4.C" gate="G$1" x="12.7" y="86.36" rot="R90"/>
+<instance part="J4.C" gate="G$1" x="12.7" y="86.36" rot="R270"/>
 <instance part="U$5" gate="G$1" x="-58.42" y="106.68"/>
 <instance part="U$5" gate="G$2" x="-58.42" y="132.08" rot="R90"/>
 <instance part="P+4" gate="VCC" x="45.72" y="149.86"/>
@@ -15710,6 +15776,7 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <instance part="U$21" gate="G$1" x="38.1" y="114.3"/>
 <instance part="GND16" gate="1" x="15.24" y="111.76"/>
 <instance part="GND29" gate="1" x="35.56" y="111.76"/>
+<instance part="U$8" gate="G$1" x="86.36" y="91.44"/>
 </instances>
 <busses>
 </busses>
@@ -15768,6 +15835,9 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <wire x1="45.72" y1="93.98" x2="17.78" y2="93.98" width="0.1524" layer="91"/>
 <junction x="45.72" y="93.98"/>
 <pinref part="U$19" gate="G$1" pin="VCC"/>
+<pinref part="U$8" gate="G$1" pin="5V"/>
+<wire x1="60.96" y1="93.98" x2="81.28" y2="96.52" width="0.1524" layer="91"/>
+<junction x="60.96" y="93.98"/>
 </segment>
 <segment>
 <pinref part="J6" gate="G$1" pin="2"/>
@@ -15873,6 +15943,9 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <wire x1="109.22" y1="93.98" x2="109.22" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="93.98" x2="109.22" y2="93.98" width="0.1524" layer="91"/>
 <junction x="109.22" y="93.98"/>
+<pinref part="U$8" gate="G$1" pin="GND"/>
+<wire x1="81.28" y1="93.98" x2="106.68" y2="93.98" width="0.1524" layer="91"/>
+<junction x="106.68" y="93.98"/>
 </segment>
 <segment>
 <pinref part="U$5" gate="G$2" pin="GND"/>
@@ -15966,6 +16039,9 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <pinref part="U$20" gate="G$1" pin="CSYNC/12V"/>
 <junction x="45.72" y="78.74"/>
 <pinref part="U$19" gate="G$1" pin="CSYNC/12V"/>
+<pinref part="U$8" gate="G$1" pin="12V"/>
+<wire x1="81.28" y1="99.06" x2="60.96" y2="78.74" width="0.1524" layer="91"/>
+<junction x="60.96" y="78.74"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -15986,6 +16062,9 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <pinref part="U$19" gate="G$1" pin="STEREO"/>
 <pinref part="U$21" gate="G$1" pin="T"/>
 <wire x1="35.56" y1="116.84" x2="30.48" y2="116.84" width="0.1524" layer="91"/>
+<pinref part="U$8" gate="G$1" pin="A"/>
+<wire x1="81.28" y1="81.28" x2="60.96" y2="96.52" width="0.1524" layer="91"/>
+<junction x="60.96" y="96.52"/>
 </segment>
 </net>
 <net name="N$6" class="0">
@@ -15996,6 +16075,9 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <wire x1="45.72" y1="81.28" x2="60.96" y2="81.28" width="0.1524" layer="91"/>
 <junction x="45.72" y="81.28"/>
 <pinref part="U$19" gate="G$1" pin="B"/>
+<pinref part="U$8" gate="G$1" pin="B"/>
+<wire x1="81.28" y1="86.36" x2="60.96" y2="81.28" width="0.1524" layer="91"/>
+<junction x="60.96" y="81.28"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -16006,12 +16088,12 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <wire x1="60.96" y1="86.36" x2="45.72" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="86.36" x2="17.78" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="17.78" y1="86.36" x2="17.78" y2="78.74" width="0.1524" layer="91"/>
-<pinref part="J4.C" gate="G$1" pin="1"/>
-<wire x1="12.7" y1="81.28" x2="12.7" y2="78.74" width="0.1524" layer="91"/>
-<junction x="12.7" y="78.74"/>
 <pinref part="U$20" gate="G$1" pin="Y"/>
 <junction x="45.72" y="86.36"/>
 <pinref part="U$19" gate="G$1" pin="Y"/>
+<pinref part="J4.C" gate="G$1" pin="2"/>
+<wire x1="12.7" y1="78.74" x2="12.7" y2="81.28" width="0.1524" layer="91"/>
+<junction x="12.7" y="78.74"/>
 </segment>
 </net>
 <net name="N$8" class="0">
@@ -16022,6 +16104,9 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <wire x1="45.72" y1="76.2" x2="25.4" y2="76.2" width="0.1524" layer="91"/>
 <junction x="45.72" y="76.2"/>
 <pinref part="U$19" gate="G$1" pin="G"/>
+<pinref part="U$8" gate="G$1" pin="G"/>
+<wire x1="81.28" y1="88.9" x2="60.96" y2="76.2" width="0.1524" layer="91"/>
+<junction x="60.96" y="76.2"/>
 </segment>
 </net>
 <net name="N$9" class="0">
@@ -16032,6 +16117,9 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <wire x1="45.72" y1="73.66" x2="22.86" y2="73.66" width="0.1524" layer="91"/>
 <junction x="45.72" y="73.66"/>
 <pinref part="U$19" gate="G$1" pin="R"/>
+<pinref part="U$8" gate="G$1" pin="R"/>
+<wire x1="81.28" y1="91.44" x2="60.96" y2="73.66" width="0.1524" layer="91"/>
+<junction x="60.96" y="73.66"/>
 </segment>
 </net>
 <net name="N$12" class="0">
@@ -16153,16 +16241,19 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 </net>
 <net name="N$30" class="0">
 <segment>
-<pinref part="J4.C" gate="G$1" pin="2"/>
 <wire x1="12.7" y1="91.44" x2="45.72" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="91.44" x2="60.96" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="12.7" y1="91.44" x2="10.16" y2="91.44" width="0.1524" layer="91"/>
-<junction x="12.7" y="91.44"/>
 <pinref part="U$20" gate="G$1" pin="CVBS"/>
 <junction x="45.72" y="91.44"/>
 <pinref part="U$19" gate="G$1" pin="CVBS"/>
 <pinref part="J4.V" gate="G$1" pin="1"/>
+<junction x="60.96" y="91.44"/>
+<pinref part="U$8" gate="G$1" pin="V/CS"/>
 <wire x1="10.16" y1="91.44" x2="10.16" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="83.82" x2="60.96" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="91.44" x2="12.7" y2="91.44" width="0.1524" layer="91"/>
+<pinref part="J4.C" gate="G$1" pin="1"/>
+<junction x="12.7" y="91.44"/>
 </segment>
 </net>
 <net name="N$11" class="0">

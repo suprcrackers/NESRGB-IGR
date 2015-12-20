@@ -1,0 +1,12 @@
+Pin  1 - R
+Pin  2 - G
+Pin  3 - 12V (!!!)
+Pin  4 - B
+Pin  5 - GND
+Pin  6 - GND
+Pin  7 - Y or #CSYNC (selected by connection to NESRGB)
+Pin  8 - n.c.
+Pin  9 - [V or PPUV (selected by connection to NESRGB)] or Pin 7 (selected by J4) 
+Pin 10 - 5V
+Pin 11 - Audio
+Pin 12 - Audio
