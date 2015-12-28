@@ -1,0 +1,14 @@
+Pinout of the GC and SNES MultiAV
+
+Pin  1 - R
+Pin  2 - G
+Pin  3 - #CSYNC
+Pin  4 - B
+Pin  5 - GND
+Pin  6 - GND
+Pin  7 - Y
+Pin  8 - C
+Pin  9 - V or PPUV (selected by connection to NESRGB)
+Pin 10 - 5V
+Pin 11 - Audio
+Pin 12 - Audio
