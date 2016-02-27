@@ -728,11 +728,11 @@ start
     banksel TRISA                   ; Bank 1
     M_movlf 0x70, OSCCON            ; use 8MHz internal clock (internal clock set on config)
     clrf    ANSEL
-    M_movlf 0x3f, TRISA             ; in in in in in in
+;    M_movlf 0x3f, TRISA             ; in in in in in in (that is default)
     clrf    TRISC                   ; out out out out out out
     M_movlf (1<<CTRL_LATCH), IOCA   ; IOC on CTRL_LATCH
     M_movlf 0x80, OPTION_REG        ; global pullup disable, use falling edge on A2, prescaler T0 1:2
-    banksel	PORTA                   ; Bank 0
+    banksel PORTA                   ; Bank 0
 
 load_mode
     clrf    reg_current_mode
