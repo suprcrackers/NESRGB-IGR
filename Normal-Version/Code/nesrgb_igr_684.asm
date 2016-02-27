@@ -38,7 +38,7 @@
 ;                                  `-----------'
 ;
 ;   As the internal oscillator is used, you should connect a capacitor of about 100nF between
-;   Pin 1 (Vdd/+5V) and Pin 8 (Vss/GND) as close as possible to the PIC. This esures best
+;   Pin 1 (Vdd/+5V) and Pin 14 (Vss/GND) as close as possible to the PIC. This esures best
 ;   operation.
 ;
 ;   One have to use a 74LVX125 inbetween of the PIC and the NESRGB. Otherwise the CPLD on
@@ -64,6 +64,8 @@
 ;   Add a weak resistor (around 10kOhm) between Pin 3 of the PIC and ...
 ;   ... +5V (low-active reset, Pin 2 IGR goes to CPU Pin 3)
 ;   ... GND (high-active reset, Pin 2 IGR goes to CIC Pin 7)
+;   Note: If you have a blinking LED, the capacitor is somewhere at the reset button line.
+;   Remove it to solve the issue!
 ;
 ;
 ;   controller pin numbering
