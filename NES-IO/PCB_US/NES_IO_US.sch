@@ -6897,8 +6897,8 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <wire x1="3.75" y1="1.75" x2="3.75" y2="-1.75" width="0.1524" layer="21"/>
 <wire x1="-3.75" y1="1.75" x2="3.75" y2="1.75" width="0.1524" layer="21"/>
 <wire x1="3.75" y1="-1.75" x2="-3.75" y2="-1.75" width="0.1524" layer="21"/>
-<pad name="C" x="-6" y="0" drill="1.3" shape="long" thermals="no"/>
-<pad name="A" x="6" y="0" drill="1.3" shape="long" thermals="no"/>
+<pad name="C" x="-6" y="0" drill="1.3" shape="long"/>
+<pad name="A" x="6" y="0" drill="1.3" shape="long"/>
 <text x="-3.81" y="3.175" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="-3.81" y="-4.064" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
 <rectangle x1="-2.921" y1="-1.75" x2="-2.159" y2="1.75" layer="21"/>
@@ -6906,9 +6906,9 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <rectangle x1="3.75" y1="-0.635" x2="6" y2="0.635" layer="21"/>
 </package>
 <package name="RECOM">
-<pad name="VIN" x="-2.54" y="0" drill="1" diameter="1.778" shape="long" rot="R90" thermals="no"/>
-<pad name="GND" x="0" y="0" drill="1" diameter="1.6764" shape="long" rot="R90" thermals="no"/>
-<pad name="VOUT" x="2.54" y="0" drill="1" diameter="1.6764" shape="long" rot="R90" thermals="no"/>
+<pad name="VIN" x="-2.54" y="0" drill="1" diameter="1.778" shape="long" rot="R90"/>
+<pad name="GND" x="0" y="0" drill="1" diameter="1.6764" shape="long" rot="R90"/>
+<pad name="VOUT" x="2.54" y="0" drill="1" diameter="1.6764" shape="long" rot="R90"/>
 <wire x1="-5.75" y1="2" x2="5.75" y2="2" width="0.127" layer="21"/>
 <wire x1="5.75" y1="2" x2="5.75" y2="-6.5" width="0.127" layer="21"/>
 <wire x1="5.75" y1="-6.5" x2="-5.75" y2="-6.5" width="0.127" layer="21"/>
@@ -6935,14 +6935,14 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <pad name="G" x="5.08" y="5.08" drill="1"/>
 <pad name="R" x="5.08" y="2.54" drill="1" shape="square"/>
 <pad name="B" x="7.62" y="5.08" drill="1"/>
-<pad name="GND2" x="10.16" y="5.08" drill="1" thermals="no"/>
+<pad name="GND2" x="10.16" y="5.08" drill="1"/>
 <pad name="C" x="12.7" y="5.08" drill="1"/>
 <pad name="5V" x="15.24" y="5.08" drill="1"/>
 <pad name="STEREO" x="17.78" y="5.08" drill="1"/>
 <pad name="MONO" x="17.78" y="2.54" drill="1"/>
 <pad name="CVBS" x="15.24" y="2.54" drill="1"/>
 <pad name="Y" x="12.7" y="2.54" drill="0.9"/>
-<pad name="GND1" x="10.16" y="2.54" drill="1" thermals="no"/>
+<pad name="GND1" x="10.16" y="2.54" drill="1"/>
 <pad name="12V" x="7.62" y="2.54" drill="1"/>
 <smd name="GND3" x="1.11125" y="3.33375" dx="4.064" dy="1.27" layer="16" roundness="100" rot="R90"/>
 <smd name="GND4" x="6.35" y="0.15875" dx="4.064" dy="1.27" layer="16" roundness="100"/>
@@ -7004,8 +7004,8 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <hole x="17.78" y="0" drill="1"/>
 <hole x="15.24" y="0" drill="1"/>
 <smd name="12V" x="7.62" y="0" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
-<smd name="GND2" x="10.16" y="2.54" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180" thermals="no"/>
-<smd name="GND1" x="10.16" y="0" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180" thermals="no"/>
+<smd name="GND2" x="10.16" y="2.54" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
+<smd name="GND1" x="10.16" y="0" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
 <smd name="C" x="12.7" y="2.54" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
 <smd name="Y" x="12.7" y="0" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
 <smd name="5V" x="15.24" y="2.54" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
@@ -15541,6 +15541,7 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <part name="GND" library="wirepad" deviceset="SMD5" device=""/>
 <part name="GND10" library="wirepad" deviceset="SMD5" device=""/>
 <part name="GND11" library="supply1" deviceset="GND" device=""/>
+<part name="GND_MAV" library="wirepad" deviceset="SMD2" device=""/>
 <part name="U$5" library="snes_div" deviceset="PIC16F630_SIMPLE" device=""/>
 <part name="P+4" library="supply1" deviceset="VCC" device=""/>
 <part name="P+5" library="supply1" deviceset="VCC" device=""/>
@@ -15605,8 +15606,8 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <part name="U$21" library="nintendo" deviceset="CINCH_2" device=""/>
 <part name="GND16" library="supply1" deviceset="GND" device=""/>
 <part name="GND29" library="supply1" deviceset="GND" device=""/>
-<part name="Y" library="wirepad" deviceset="SMD2" device=""/>
 <part name="C" library="wirepad" deviceset="SMD2" device=""/>
+<part name="Y" library="wirepad" deviceset="SMD2" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -15630,13 +15631,14 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <instance part="GND4" gate="1" x="35.56" y="81.28"/>
 <instance part="AUDIO" gate="1" x="22.86" y="99.06"/>
 <instance part="PPUV" gate="1" x="5.08" y="91.44"/>
-<instance part="CS" gate="1" x="22.86" y="78.74"/>
-<instance part="R" gate="1" x="22.86" y="73.66"/>
-<instance part="G" gate="1" x="20.32" y="76.2"/>
+<instance part="CS" gate="1" x="15.24" y="78.74"/>
+<instance part="R" gate="1" x="20.32" y="73.66"/>
+<instance part="G" gate="1" x="22.86" y="76.2"/>
 <instance part="B" gate="1" x="20.32" y="81.28"/>
 <instance part="GND" gate="1" x="104.14" y="88.9"/>
 <instance part="GND10" gate="1" x="104.14" y="86.36"/>
 <instance part="GND11" gate="1" x="109.22" y="81.28"/>
+<instance part="GND_MAV" gate="1" x="22.86" y="83.82"/>
 <instance part="U$5" gate="G$1" x="-58.42" y="106.68"/>
 <instance part="U$5" gate="G$2" x="-58.42" y="132.08" rot="R90"/>
 <instance part="P+4" gate="VCC" x="45.72" y="149.86"/>
@@ -15706,8 +15708,8 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <instance part="U$21" gate="G$1" x="38.1" y="114.3"/>
 <instance part="GND16" gate="1" x="15.24" y="111.76"/>
 <instance part="GND29" gate="1" x="35.56" y="111.76"/>
-<instance part="Y" gate="1" x="20.32" y="86.36"/>
-<instance part="C" gate="1" x="22.86" y="88.9"/>
+<instance part="C" gate="1" x="20.32" y="88.9"/>
+<instance part="Y" gate="1" x="15.24" y="86.36"/>
 </instances>
 <busses>
 </busses>
@@ -15839,7 +15841,10 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <segment>
 <pinref part="GND4" gate="1" pin="GND"/>
 <wire x1="60.96" y1="83.82" x2="45.72" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="GND_MAV" gate="1" pin="P"/>
 <wire x1="45.72" y1="83.82" x2="35.56" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="83.82" x2="25.4" y2="83.82" width="0.1524" layer="91"/>
+<junction x="35.56" y="83.82"/>
 <pinref part="U$20" gate="G$1" pin="GND"/>
 <junction x="45.72" y="83.82"/>
 <pinref part="U$19" gate="G$1" pin="GND"/>
@@ -15985,22 +15990,12 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <pinref part="U$19" gate="G$1" pin="B"/>
 </segment>
 </net>
-<net name="N$7" class="0">
-<segment>
-<pinref part="CS" gate="1" pin="P"/>
-<pinref part="U$19" gate="G$1" pin="CSYNC/12V"/>
-<wire x1="60.96" y1="78.74" x2="45.72" y2="78.74" width="0.1524" layer="91"/>
-<pinref part="U$20" gate="G$1" pin="CSYNC/12V"/>
-<junction x="45.72" y="78.74"/>
-<wire x1="25.4" y1="78.74" x2="45.72" y2="78.74" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$8" class="0">
 <segment>
 <pinref part="G" gate="1" pin="P"/>
 <wire x1="60.96" y1="76.2" x2="45.72" y2="76.2" width="0.1524" layer="91"/>
 <pinref part="U$20" gate="G$1" pin="G"/>
-<wire x1="45.72" y1="76.2" x2="22.86" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="76.2" x2="25.4" y2="76.2" width="0.1524" layer="91"/>
 <junction x="45.72" y="76.2"/>
 <pinref part="U$19" gate="G$1" pin="G"/>
 </segment>
@@ -16010,7 +16005,7 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <pinref part="R" gate="1" pin="P"/>
 <wire x1="60.96" y1="73.66" x2="45.72" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="U$20" gate="G$1" pin="R"/>
-<wire x1="45.72" y1="73.66" x2="25.4" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="73.66" x2="22.86" y2="73.66" width="0.1524" layer="91"/>
 <junction x="45.72" y="73.66"/>
 <pinref part="U$19" gate="G$1" pin="R"/>
 </segment>
@@ -16132,6 +16127,21 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <wire x1="7.62" y1="40.64" x2="-15.24" y2="40.64" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="N$30" class="0">
+<segment>
+<wire x1="10.16" y1="91.44" x2="45.72" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="91.44" x2="60.96" y2="91.44" width="0.1524" layer="91"/>
+<pinref part="U$20" gate="G$1" pin="CVBS"/>
+<junction x="45.72" y="91.44"/>
+<pinref part="U$19" gate="G$1" pin="CVBS"/>
+<pinref part="PPUV" gate="1" pin="P"/>
+<wire x1="10.16" y1="91.44" x2="7.62" y2="91.44" width="0.1524" layer="91"/>
+<junction x="10.16" y="91.44"/>
+<pinref part="U$18" gate="G$1" pin="T"/>
+<wire x1="15.24" y1="116.84" x2="10.16" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="116.84" x2="10.16" y2="91.44" width="0.1524" layer="91"/>
+</segment>
+</net>
 <net name="N$11" class="0">
 <segment>
 <pinref part="3" gate="1" pin="P"/>
@@ -16144,21 +16154,6 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <pinref part="1" gate="1" pin="P"/>
 <pinref part="IC1" gate="A" pin="O"/>
 <wire x1="7.62" y1="30.48" x2="-27.94" y2="30.48" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$29" class="0">
-<segment>
-<pinref part="PPUV" gate="1" pin="P"/>
-<wire x1="10.16" y1="91.44" x2="7.62" y2="91.44" width="0.1524" layer="91"/>
-<junction x="10.16" y="91.44"/>
-<pinref part="U$18" gate="G$1" pin="T"/>
-<wire x1="15.24" y1="116.84" x2="10.16" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="10.16" y1="116.84" x2="10.16" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="10.16" y1="91.44" x2="45.72" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="45.72" y1="91.44" x2="60.96" y2="91.44" width="0.1524" layer="91"/>
-<pinref part="U$20" gate="G$1" pin="CVBS"/>
-<junction x="45.72" y="91.44"/>
-<pinref part="U$19" gate="G$1" pin="CVBS"/>
 </segment>
 </net>
 <net name="N$31" class="0">
@@ -16219,21 +16214,31 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <wire x1="-81.28" y1="114.3" x2="-71.12" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="N$1" class="0">
+<segment>
+<pinref part="U$19" gate="G$1" pin="CSYNC/12V"/>
+<wire x1="60.96" y1="78.74" x2="45.72" y2="78.74" width="0.1524" layer="91"/>
+<pinref part="U$20" gate="G$1" pin="CSYNC/12V"/>
+<pinref part="CS" gate="1" pin="P"/>
+<wire x1="45.72" y1="78.74" x2="17.78" y2="78.74" width="0.1524" layer="91"/>
+<junction x="45.72" y="78.74"/>
+</segment>
+</net>
 <net name="N$2" class="0">
 <segment>
 <pinref part="U$19" gate="G$1" pin="Y"/>
 <wire x1="60.96" y1="86.36" x2="45.72" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="U$20" gate="G$1" pin="Y"/>
 <pinref part="Y" gate="1" pin="P"/>
-<wire x1="45.72" y1="86.36" x2="22.86" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="86.36" x2="45.72" y2="86.36" width="0.1524" layer="91"/>
 <junction x="45.72" y="86.36"/>
 </segment>
 </net>
-<net name="N$1" class="0">
+<net name="N$3" class="0">
 <segment>
-<pinref part="C" gate="1" pin="P"/>
 <pinref part="U$20" gate="G$1" pin="C"/>
-<wire x1="25.4" y1="88.9" x2="45.72" y2="88.9" width="0.1524" layer="91"/>
+<pinref part="C" gate="1" pin="P"/>
+<wire x1="45.72" y1="88.9" x2="22.86" y2="88.9" width="0.1524" layer="91"/>
 <pinref part="U$19" gate="G$1" pin="C"/>
 <wire x1="60.96" y1="88.9" x2="45.72" y2="88.9" width="0.1524" layer="91"/>
 <junction x="45.72" y="88.9"/>

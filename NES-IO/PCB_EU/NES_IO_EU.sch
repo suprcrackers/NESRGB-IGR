@@ -6897,8 +6897,8 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <wire x1="3.75" y1="1.75" x2="3.75" y2="-1.75" width="0.1524" layer="21"/>
 <wire x1="-3.75" y1="1.75" x2="3.75" y2="1.75" width="0.1524" layer="21"/>
 <wire x1="3.75" y1="-1.75" x2="-3.75" y2="-1.75" width="0.1524" layer="21"/>
-<pad name="C" x="-6" y="0" drill="1.3" shape="long" thermals="no"/>
-<pad name="A" x="6" y="0" drill="1.3" shape="long" thermals="no"/>
+<pad name="C" x="-6" y="0" drill="1.3" shape="long"/>
+<pad name="A" x="6" y="0" drill="1.3" shape="long"/>
 <text x="-3.81" y="3.175" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="-3.81" y="-4.064" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
 <rectangle x1="-2.921" y1="-1.75" x2="-2.159" y2="1.75" layer="21"/>
@@ -6906,9 +6906,9 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <rectangle x1="3.75" y1="-0.635" x2="6" y2="0.635" layer="21"/>
 </package>
 <package name="RECOM">
-<pad name="VIN" x="-2.54" y="0" drill="1" diameter="1.778" shape="long" rot="R90" thermals="no"/>
-<pad name="GND" x="0" y="0" drill="1" diameter="1.6764" shape="long" rot="R90" thermals="no"/>
-<pad name="VOUT" x="2.54" y="0" drill="1" diameter="1.6764" shape="long" rot="R90" thermals="no"/>
+<pad name="VIN" x="-2.54" y="0" drill="1" diameter="1.778" shape="long" rot="R90"/>
+<pad name="GND" x="0" y="0" drill="1" diameter="1.6764" shape="long" rot="R90"/>
+<pad name="VOUT" x="2.54" y="0" drill="1" diameter="1.6764" shape="long" rot="R90"/>
 <wire x1="-5.75" y1="2" x2="5.75" y2="2" width="0.127" layer="21"/>
 <wire x1="5.75" y1="2" x2="5.75" y2="-6.5" width="0.127" layer="21"/>
 <wire x1="5.75" y1="-6.5" x2="-5.75" y2="-6.5" width="0.127" layer="21"/>
@@ -6935,14 +6935,14 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <pad name="G" x="5.08" y="5.08" drill="1"/>
 <pad name="R" x="5.08" y="2.54" drill="1" shape="square"/>
 <pad name="B" x="7.62" y="5.08" drill="1"/>
-<pad name="GND2" x="10.16" y="5.08" drill="1" thermals="no"/>
+<pad name="GND2" x="10.16" y="5.08" drill="1"/>
 <pad name="C" x="12.7" y="5.08" drill="1"/>
 <pad name="5V" x="15.24" y="5.08" drill="1"/>
 <pad name="STEREO" x="17.78" y="5.08" drill="1"/>
 <pad name="MONO" x="17.78" y="2.54" drill="1"/>
 <pad name="CVBS" x="15.24" y="2.54" drill="1"/>
 <pad name="Y" x="12.7" y="2.54" drill="0.9"/>
-<pad name="GND1" x="10.16" y="2.54" drill="1" thermals="no"/>
+<pad name="GND1" x="10.16" y="2.54" drill="1"/>
 <pad name="12V" x="7.62" y="2.54" drill="1"/>
 <smd name="GND3" x="1.11125" y="3.33375" dx="4.064" dy="1.27" layer="16" roundness="100" rot="R90"/>
 <smd name="GND4" x="6.35" y="0.15875" dx="4.064" dy="1.27" layer="16" roundness="100"/>
@@ -7004,8 +7004,8 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <hole x="17.78" y="0" drill="1"/>
 <hole x="15.24" y="0" drill="1"/>
 <smd name="12V" x="7.62" y="0" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
-<smd name="GND2" x="10.16" y="2.54" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180" thermals="no"/>
-<smd name="GND1" x="10.16" y="0" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180" thermals="no"/>
+<smd name="GND2" x="10.16" y="2.54" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
+<smd name="GND1" x="10.16" y="0" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
 <smd name="C" x="12.7" y="2.54" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
 <smd name="Y" x="12.7" y="0" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
 <smd name="5V" x="15.24" y="2.54" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
@@ -7058,11 +7058,11 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <hole x="-5.08" y="1.27" drill="1"/>
 <smd name="P$2" x="-5.08" y="1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
 <smd name="P$3" x="-2.54" y="-1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
-<smd name="P$4" x="-2.54" y="1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180" thermals="no"/>
+<smd name="P$4" x="-2.54" y="1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
 <smd name="P$5" x="0" y="-1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
-<smd name="P$6" x="0" y="1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180" thermals="no"/>
+<smd name="P$6" x="0" y="1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
 <smd name="P$7" x="2.54" y="-1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
-<smd name="P$8" x="2.54" y="1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180" thermals="no"/>
+<smd name="P$8" x="2.54" y="1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
 <smd name="P$9" x="5.08" y="-1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
 <smd name="P$10" x="5.08" y="1.27" dx="1.524" dy="1.524" layer="16" roundness="100" rot="R180"/>
 <text x="-7.14375" y="-1.905" size="1.27" layer="21" font="vector" ratio="12">1</text>
